@@ -20,8 +20,7 @@ public class Cultivo {
 	private String fechaPlantacion;
 	private String zona;
 	
-	@OneToMany(mappedBy = "")
-	private ArrayList<Tratamiento> tratamientos;
+	//private ArrayList<Tratamiento> tratamientos;
 	
 	public Cultivo() {
 
@@ -36,13 +35,13 @@ public class Cultivo {
 	}
 
 	
-	public ArrayList<Tratamiento> getTratamientos() {
+	/*public ArrayList<Tratamiento> getTratamientos() {
 		return tratamientos;
 	}
 
 	public void setAnuncios(ArrayList<Tratamiento> tratamientos) {
 		this.tratamientos = tratamientos;
-	}
+	}*/
 
 	public String getEspecie() {
 		return especie;

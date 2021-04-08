@@ -8,8 +8,4 @@ import practica1.model.*;
 
 public interface ProductoFitosanitarioRepository extends JpaRepository<Tratamiento, Long> {
 
-	Cultivo findByUsuario(String usuario);
-	
-	//Obtiene la lista de personas ordenada por orden ascendente del atributo usuario
-	ArrayList<Cultivo> findAllByOrderByUsuarioAsc();
 }
