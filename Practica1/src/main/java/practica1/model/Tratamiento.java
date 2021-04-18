@@ -23,6 +23,19 @@ public class Tratamiento {
 	public Tratamiento() {
 
 	}
+	public Tratamiento(String cultivo, 
+			String producto, 
+			String numeroLote, 
+			LocalDate fechaTratamiento,
+			LocalDate plazoReentrada,
+			LocalDate plazoRecoleccion) {
+		this.cultivo = cultivo;
+		this.producto = producto;
+		this.numeroLote = numeroLote;
+		this.fechaTratamiento = fechaTratamiento;
+		this.plazoReentrada = plazoReentrada;
+		this.plazoRecoleccion = plazoRecoleccion;
+	}
 
 	public long getIdTratamiento() {
 		return idTratamiento;
