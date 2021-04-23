@@ -4,139 +4,74 @@
 <meta charset="UTF-8">
 <title>Tratamientos</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"></head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="extensions/filter-control/bootstrap-table-filter-control.css">
+<script src="extensions/filter-control/bootstrap-table-filter-control.js"></script>
+<link rel="stylesheet" type="text/css"
+href="../static/css/estilos.css"
+th:href="@{/css/estilos.css}"/>
 
 </head>
 <body>
-<h1>Tablon</h1>
-<h2>Nombre/Asunto</h2>
-<table id="example" class="table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Finn Camacho</td>
-                <td>Support Engineer</td>
-                <td>San Francisco</td>
-                <td>47</td>
-                <td>2009/07/07</td>
-                <td>$87,500</td>
-            </tr>
-            <tr>
-                <td>Serge Baldwin</td>
-                <td>Data Coordinator</td>
-                <td>Singapore</td>
-                <td>64</td>
-                <td>2012/04/09</td>
-                <td>$138,575</td>
-            </tr>
-            <tr>
-                <td>Zenaida Frank</td>
-                <td>Software Engineer</td>
-                <td>New York</td>
-                <td>63</td>
-                <td>2010/01/04</td>
-                <td>$125,250</td>
-            </tr>
-            <tr>
-                <td>Zorita Serrano</td>
-                <td>Software Engineer</td>
-                <td>San Francisco</td>
-                <td>56</td>
-                <td>2012/06/01</td>
-                <td>$115,000</td>
-            </tr>
-            <tr>
-                <td>Jennifer Acosta</td>
-                <td>Junior Javascript Developer</td>
-                <td>Edinburgh</td>
-                <td>43</td>
-                <td>2013/02/01</td>
-                <td>$75,650</td>
-            </tr>
-            <tr>
-                <td>Cara Stevens</td>
-                <td>Sales Assistant</td>
-                <td>New York</td>
-                <td>46</td>
-                <td>2011/12/06</td>
-                <td>$145,600</td>
-            </tr>
-            <tr>
-                <td>Hermione Butler</td>
-                <td>Regional Director</td>
-                <td>London</td>
-                <td>47</td>
-                <td>2011/03/21</td>
-                <td>$356,250</td>
-            </tr>
-            <tr>
-                <td>Lael Greer</td>
-                <td>Systems Administrator</td>
-                <td>London</td>
-                <td>21</td>
-                <td>2009/02/27</td>
-                <td>$103,500</td>
-            </tr>
-            <tr>
-                <td>Jonas Alexander</td>
-                <td>Developer</td>
-                <td>San Francisco</td>
-                <td>30</td>
-                <td>2010/07/14</td>
-                <td>$86,500</td>
-            </tr>
-            <tr>
-                <td>Shad Decker</td>
-                <td>Regional Director</td>
-                <td>Edinburgh</td>
-                <td>51</td>
-                <td>2008/11/13</td>
-                <td>$183,000</td>
-            </tr>
-            <tr>
-                <td>Michael Bruce</td>
-                <td>Javascript Developer</td>
-                <td>Singapore</td>
-                <td>29</td>
-                <td>2011/06/27</td>
-                <td>$183,000</td>
-            </tr>
-            <tr>
-                <td>Donna Snider</td>
-                <td>Customer Support</td>
-                <td>New York</td>
-                <td>27</td>
-                <td>2011/01/25</td>
-                <td>$112,000</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </tfoot>
-    </table>
-<p th:each="anuncio: ${anuncios}">
-	<span th:text="'Nombre: '+ ${anuncio.nombre}" /><br/>
-	<span th:text="'Asunto: '+ ${anuncio.asunto}" /><br/>
-	<a th:href="@{/mostrar(numAnuncio=${anuncio.id})}">Ver</a>
-</p>
-<a href="/nuevoAnuncio.html">Insertar Nuevo Anuncio</a>
-
-
+	<div class="container-fluid">
+	<ul class="nav nav-pills" >
+	  <li role="presentation" class="active"><a href="/tratamientos">Tratamientos</a></li>
+	  <li role="presentation"><a href="/cultivos">Cultivos</a></li>
+	  <li role="presentation"><a href="/productosFitosanitarios">Productos Fitosanitarios</a></li>
+	  <!-- <li>
+		<form class="navbar-form navbar-left" role="buscar tratamientos">
+		  <div class="form-group">
+		    <input type="text" class="form-control" placeholder="Buscar Tratamientos">
+		  </div>
+		  <button type="submit" class="btn btn-default">Buscar</button>
+		</form>
+		</li> -->
+	</ul>
+	
+	<div class="page-header">
+	  <h1>Tus tratamientos</h1>
+	</div>
+	<p>
+	En esta página te mostraremos tus tratamientos para las plagas.
+	</p>
+	<p color="red">Añadir un if para cuando no haya cultivos añadidos a la base de datos</p>
+	<a href="/nuevoTratamiento">Insertar Nuevo Tratamiento</a>
+	
+		<table id="example" class="table table-striped table-bordered table-hover">
+	        <thead>
+	                    <tr class="filters">
+	                        <th><input type="text" class="form-control" placeholder="Tratamiento"></th>
+	                        <th><input type="text" class="form-control" placeholder="Cultivo" ></th>
+	                        <th><input type="text" class="form-control" placeholder="Producto" ></th>
+	                        <th><input type="text" class="form-control" placeholder="Numero de lote" ></th>
+	                        <th><input type="text" class="form-control" placeholder="Fecha de tratamiento" ></th>
+	                        <th><input type="text" class="form-control" placeholder="Plazo de reentrada" ></th>
+	                        <th><input type="text" class="form-control" placeholder="Plazo de recolección" ></th>
+	                    </tr>
+	                </thead>
+	        <tbody>
+	            <tr th:each=" tratamiento:${tratamientos}">
+	                <td><a th:text="${tratamiento.idTratamiento}"></a></td>
+	                <td><a th:text="${tratamiento.cultivo }"></a></td>
+	                <td><a th:text="${tratamiento.producto}"></a></td>
+	                <td><a th:text="${tratamiento.numeroLote}"></a></td>
+	                <td><a th:text="${tratamiento.fechaTratamiento}"></a></td>
+	                <td><a th:text="${tratamiento.plazoReentrada}"></a></td>
+	                <td><a th:text="${tratamiento.plazoRecoleccion}"></a></td>
+	            </tr>            
+	        </tbody>
+	        <tfoot>
+	            <tr>
+	                <th>Tramiento</th>
+	                <th>Cultivo</th>
+	                <th>Producto</th>
+	                <th>Numero de Lote</th>
+	                <th>Fecha de tratamiento</th>
+	                <th>Plazo de reentrada</th>
+	                <th>Plazo de recolección</th>
+	            </tr>
+	        </tfoot>
+	    </table>
+	</div>
 </body>
 </html>

@@ -5,13 +5,14 @@ import java.time.LocalDate;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import practica1.model.Tratamiento;
 import practica1.repository.TratamientoRepository;
 
-
+@Controller
 public class TratamientosController {
 	@Autowired
 	private TratamientoRepository repTratamientos;
@@ -20,8 +21,9 @@ public class TratamientosController {
 	public void init() {
 		repTratamientos.save(new Tratamiento("Mangos", "Hierro", "9999", LocalDate.of(2021,7,5), LocalDate.of(2021,7,5), LocalDate.of(2021,7,9)));
 	}
-	@RequestMapping("/")
-	public String tablon(Model model) {
+
+	@RequestMapping("/tratamientos")
+	public String tratamientos(Model model) {
 		
 		model.addAttribute("tratamientos", repTratamientos.findAll());
 		
