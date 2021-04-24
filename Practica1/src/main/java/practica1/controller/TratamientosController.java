@@ -64,7 +64,7 @@ public class TratamientosController {
 			model.addAttribute("tratamientos", repTratamientos.findAll());
 		}
 		
-		return "mostrarTratamientos";
+		return "/tratamientos/mostrarTratamientos";
 	}
 	
 	
@@ -77,7 +77,7 @@ public class TratamientosController {
 			
 		model.addAttribute("tratamiento", repTratamientos.getOne(id));
 		
-		return "modificarTratamiento";
+		return "/tratamientos/modificarTratamiento";
 	}
 	
 	@RequestMapping("/tratamientoModificado")
@@ -104,7 +104,7 @@ public class TratamientosController {
 	public String tratamientos(
 			Model model) {
 					
-		return "insertarTratamiento";
+		return "/tratamientos/insertarTratamiento";
 	}
 	
 	@RequestMapping("/nuevoTratamiento")
@@ -119,7 +119,7 @@ public class TratamientosController {
 		
 		model.addAttribute("mensaje","Se ha insertado el tratamiento con éxito");
 		
-		return "InsertadoConExito";
+		return "InsertadoConExito.html";
 	}
 	
 }
