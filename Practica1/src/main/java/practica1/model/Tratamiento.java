@@ -2,6 +2,7 @@ package practica1.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,9 +11,11 @@ import javax.persistence.Id;
 public class Tratamiento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long idTratamiento;
-	
+	@Column(name="idTratamiento",updatable = false, nullable = false)
+	private Long idTratamiento;
+	@Column(name="cultivo")
 	private String cultivo;
+	@Column(name="producto")
 	private String producto;
 	private String numeroLote;
 	private LocalDate fechaTratamiento;
@@ -22,6 +25,13 @@ public class Tratamiento {
 	
 	public Tratamiento() {
 
+	}
+	public Tratamiento(String cultivo, 
+			String producto, 
+			String numeroLote) {
+		this.cultivo = cultivo;
+		this.producto = producto;
+		this.numeroLote = numeroLote;
 	}
 	public Tratamiento(String cultivo, 
 			String producto, 
@@ -37,7 +47,9 @@ public class Tratamiento {
 		this.plazoRecoleccion = plazoRecoleccion;
 	}
 
-	public long getIdTratamiento() {
+	
+	
+	public Long getIdTratamiento() {
 		return idTratamiento;
 	}
 
@@ -45,8 +57,8 @@ public class Tratamiento {
 		this.idTratamiento = idTratamiento;
 	}
 
-	public long getId() {
-		return idTratamiento;
+	public Long getId() {
+		return this.idTratamiento;
 	}
 
 	public void setId(long id) {
@@ -81,23 +93,36 @@ public class Tratamiento {
 		return fechaTratamiento;
 	}
 
-	public void setFechaTratamiento(LocalDate fechaTratamiento) {
-		this.fechaTratamiento = fechaTratamiento;
+	public void setFechaTratamiento(String fechaTratamiento) {
+		this.fechaTratamiento = LocalDate.parse(fechaTratamiento);
 	}
 
 	public LocalDate getPlazoReentrada() {
 		return plazoReentrada;
 	}
 
-	public void setPlazoReentrada(LocalDate plazoReentrada) {
-		this.plazoReentrada = plazoReentrada;
+	public void setPlazoReentrada(String plazoReentrada) {
+		this.plazoReentrada= LocalDate.parse(plazoReentrada);
 	}
 
 	public LocalDate getPlazoRecoleccion() {
 		return plazoRecoleccion;
 	}
 
-	public void setPlazoRecoleccion(LocalDate plazoRecoleccion) {
-		this.plazoRecoleccion = plazoRecoleccion;
+	public void setPlazoRecoleccion(String plazoRecoleccion) {
+		this.plazoRecoleccion = LocalDate.parse(plazoRecoleccion);
+	}
+	
+	public void updateTratamiento(Tratamiento trat) {
+		this.cultivo = trat.cultivo;
+		this.producto = trat.producto;
+		this.numeroLote = trat.numeroLote;
+		this.fechaTratamiento = trat.fechaTratamiento;
+		this.plazoReentrada = trat.plazoReentrada;
+		this.plazoRecoleccion = trat.plazoRecoleccion;
+	}
+	@Override
+	public String toString(){
+		return this.idTratamiento.toString();
 	}
 }
