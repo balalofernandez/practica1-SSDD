@@ -30,6 +30,7 @@ public class Cultivo {
 		return idcultivo;
 	}
 
+	
 	public void setIdCultivo(long idcultivo) {
 		this.idcultivo = idcultivo;
 	}
