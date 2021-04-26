@@ -123,8 +123,4 @@ public class Tratamiento implements Serializable {
 		this.plazoRecoleccion = trat.plazoRecoleccion;
 	}
 	
-	@Override
-	toString(tratamiento trat){
-		
-	} return long.toString(idTratamiento)
 }
