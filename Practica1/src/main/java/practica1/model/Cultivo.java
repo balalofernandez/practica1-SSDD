@@ -1,7 +1,9 @@
 package practica1.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -50,13 +52,13 @@ public class Cultivo {
 	}
 
 	
-	*public ArrayList<Tratamiento> getTratamientos() {
+	public ArrayList<Tratamiento> getTratamientos() {
 		return tratamientos;
 	}
 
 	public void setTratamientos(ArrayList<Tratamiento> tratamientos) {
 		this.tratamientos = tratamientos;
-	}*
+	}
 
 	public String getEspecie() {
 		return especie;
@@ -74,12 +76,12 @@ public class Cultivo {
 		this.variedad = variedad;
 	}
 
-	public String getFechaPlantacion() {
+	public LocalDate getFechaPlantacion() {
 		return fechaPlantacion;
 	}
 
 	public void setFechaPlantacion(String fechaPlantacion) {
-		this.fechaPlantacion = fechaPlantacion;
+		this.fechaPlantacion = LocalDate.parse(fechaPlantacion);
 	}
 
 	public String getZona() {
@@ -93,8 +95,8 @@ public class Cultivo {
 	public void updateCultivo(Cultivo cult) {
 		this.especie = cult.especie;
 		this.variedad = cult.variedad;
-		this.fechaPlantacion = trat.fechaPlantacion;
-		this.zona = trat.zona;
+		this.fechaPlantacion = cult.fechaPlantacion;
+		this.zona = cult.zona;
 	}
 
 	@Override

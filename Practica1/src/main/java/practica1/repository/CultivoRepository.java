@@ -1,6 +1,8 @@
 package practica1.repository;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

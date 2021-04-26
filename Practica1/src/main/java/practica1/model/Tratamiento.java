@@ -121,8 +121,5 @@ public class Tratamiento {
 		this.plazoReentrada = trat.plazoReentrada;
 		this.plazoRecoleccion = trat.plazoRecoleccion;
 	}
-	@Override
-	public String toString(){
-		return this.idTratamiento.toString();
-	}
+	
 }

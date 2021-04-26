@@ -1,6 +1,7 @@
 package practica1.controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
 
@@ -20,18 +21,17 @@ public class CultivosController {
 	
 	@PostConstruct
 	public void init() {
+		repCultivos.save(new Cultivo("Mango", "Osteen", LocalDate.of(2020,1,5),"Málaga",new ArrayList<>()));
+		/*repCultivos.save(new Cultivo());
 		repCultivos.save(new Cultivo());
 		repCultivos.save(new Cultivo());
 		repCultivos.save(new Cultivo());
-		repCultivos.save(new Cultivo());
-		repCultivos.save(new Cultivo());
-		repCultivos.save(new Cultivo());
+		repCultivos.save(new Cultivo());*/
 	}
 
 	@RequestMapping("/cultivos")
 	public String cultivos(
 			@RequestParam(value="enviar",required=false) String enviar,
-			//Los siguientes son urls que lee para hacer sorts.
 			@RequestParam(required=false) Long cultivo,
 			@RequestParam(required=false) String especie,
 			@RequestParam(required=false) String variedad,
@@ -40,7 +40,7 @@ public class CultivosController {
 			Model model) {
 		
 		//CASO EN EL QUE NO HAY NINGUN PARAMETRO DE BUSQUEDA
-		if(tratamiento != null && tratamiento > 0) {
+		if(cultivo != null && cultivo > 0) {
 			System.out.println(cultivo);
 			model.addAttribute("cultivos",repCultivos.getOne(cultivo));
 		}
@@ -48,16 +48,13 @@ public class CultivosController {
 			model.addAttribute("cultivos",repCultivos.findByEspecie(especie));
 		}
 		else if(variedad != null && variedad != "") {
-			model.addAttribute("cultivos",repCultivos.findByProducto(producto));
+			model.addAttribute("cultivos",repCultivos.findByVariedad(variedad));
 		}
 		else if(fechaPlantacion != null && fechaPlantacion != "") {
 			model.addAttribute("cultivos",repCultivos.findByFechaPlantacion(LocalDate.parse(fechaPlantacion)));
 		}
 		else if(zona != null && zona != "") {
 			model.addAttribute("cultivos",repCultivos.findByZona(zona));
-		}
-		else if(tartamientos != null && tratamientos != "") {
-			model.addAttribute("cultivos",repCultivos.findByTratamiento(tratamiento));
 		}
 		else {
 			model.addAttribute("cultivos", repCultivos.findAll());
@@ -67,7 +64,7 @@ public class CultivosController {
 	}
 	
 	
-	//MODIFICAR TRATAMIENTO
+	//MODIFICAR CULTIVO
 	
 	@RequestMapping("/modificarCultivo")
 	public String modificarCultivo(
@@ -76,7 +73,7 @@ public class CultivosController {
 			
 		model.addAttribute("cultivo", repCultivos.getOne(id));
 		
-		return "/cultivos/mostrarCultivos";
+		return "/cultivos/modificarCultivos";
 	}
 	
 	@RequestMapping("/cultivoModificado")
@@ -103,7 +100,7 @@ public class CultivosController {
 	public String cultivos(
 			Model model) {
 					
-		return "/cultivos/insertarCultivo";
+		return "/cultivos/nuevoCultivo";
 	}
 	
 	@RequestMapping("/nuevoCultivo")
