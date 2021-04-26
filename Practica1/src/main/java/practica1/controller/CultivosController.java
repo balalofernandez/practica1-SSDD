@@ -19,7 +19,7 @@ public class CultivosController {
 		
 		model.addAttribute("carlos","Patata");
 		
-		return "/cultivos/mostrarCultivos";
+		return "/cultivos/mostrarCultivosnue";
 	}
 	
 	s
