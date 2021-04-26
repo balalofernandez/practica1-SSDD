@@ -13,19 +13,33 @@ public class Cultivo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="idCultivo",updatable = false, nullable = false)
 	private long idcultivo;
-	
+	@Column(name="especie")
 	private String especie;	
+	@Column(name="variedad")
 	private String variedad;
-	private String fechaPlantacion;
+	private LocalDate fechaPlantacion;
 	private String zona;
 	
-	//private ArrayList<Tratamiento> tratamientos;
+	private ArrayList<Tratamiento> tratamientos;
 	
 	public Cultivo() {
 
 	}
-
+	
+	public Cultivo(String especie, 
+			String variedad, 
+			LocalDate fechaPlantacion, 
+			String zona, 
+			ArrayList<Tratamiento> tratamientos) {
+		this.especie = especie;
+		this.variedad = variedad;
+		this.fechaPlantacion = fechaPlantacion;
+		this.zona = zona;
+		this.tratamientos = tratamientos;
+	}
+	
 	public long getIdCultivo() {
 		return idcultivo;
 	}
@@ -36,13 +50,13 @@ public class Cultivo {
 	}
 
 	
-	/*public ArrayList<Tratamiento> getTratamientos() {
+	*public ArrayList<Tratamiento> getTratamientos() {
 		return tratamientos;
 	}
 
-	public void setAnuncios(ArrayList<Tratamiento> tratamientos) {
+	public void setTratamientos(ArrayList<Tratamiento> tratamientos) {
 		this.tratamientos = tratamientos;
-	}*/
+	}*
 
 	public String getEspecie() {
 		return especie;
@@ -74,6 +88,13 @@ public class Cultivo {
 
 	public void setZona(String zona) {
 		this.zona = zona;
+	}
+	
+	public void updateCultivo(Cultivo cult) {
+		this.especie = cult.especie;
+		this.variedad = cult.variedad;
+		this.fechaPlantacion = trat.fechaPlantacion;
+		this.zona = trat.zona;
 	}
 
 	@Override
