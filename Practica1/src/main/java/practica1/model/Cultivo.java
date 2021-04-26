@@ -63,6 +63,10 @@ public class Cultivo {
 	public String getEspecie() {
 		return especie;
 	}
+	public void setEspecie(String especie) {
+		this.especie = especie;
+	}
+
 
 	public void setId(String especie) {
 		this.especie = especie;

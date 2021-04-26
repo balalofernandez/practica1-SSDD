@@ -75,7 +75,7 @@ public class CultivosController {
 			
 		model.addAttribute("cultivo", repCultivos.getOne(id));
 		
-		return "/cultivos/modificarCultivos";
+		return "/cultivos/modificarCultivo";
 	}
 	
 	@RequestMapping("/cultivoModificado")
@@ -90,7 +90,7 @@ public class CultivosController {
 			cult.updateCultivo(cultivo);
 			repCultivos.save(cult);
 		}
-		
+		model.addAttribute("path","cultivos");
 		model.addAttribute("mensaje","Se ha modificado el cultivo con éxito");
 		
 		return "ModificadoConExito";
@@ -114,7 +114,7 @@ public class CultivosController {
 		if(enviar != null) {
 			repCultivos.save(cultivo);
 		}
-		
+		model.addAttribute("path","cultivos");
 		model.addAttribute("mensaje","Se ha insertado el cultivo con éxito");
 		
 		return "InsertadoConExito.html";

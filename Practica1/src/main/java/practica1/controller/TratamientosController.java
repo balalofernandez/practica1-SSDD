@@ -92,7 +92,7 @@ public class TratamientosController {
 			trat.updateTratamiento(tratamiento);
 			repTratamientos.save(trat);
 		}
-		
+		model.addAttribute("path","tratamientos");
 		model.addAttribute("mensaje","Se ha modificado el tratamiento con éxito");
 		
 		return "ModificadoConExito";
@@ -116,7 +116,7 @@ public class TratamientosController {
 		if(enviar != null) {
 			repTratamientos.save(tratamiento);
 		}
-		
+		model.addAttribute("path","tratamientos");
 		model.addAttribute("mensaje","Se ha insertado el tratamiento con éxito");
 		
 		return "InsertadoConExito.html";
