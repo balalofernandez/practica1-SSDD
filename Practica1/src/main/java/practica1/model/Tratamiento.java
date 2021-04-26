@@ -122,4 +122,8 @@ public class Tratamiento {
 		this.plazoRecoleccion = trat.plazoRecoleccion;
 	}
 	
+	@Override
+	toString(tratamiento trat){
+		
+	} return long.toString(idTratamiento)
 }
