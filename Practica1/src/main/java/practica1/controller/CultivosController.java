@@ -2,6 +2,7 @@ package practica1.controller;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.annotation.PostConstruct;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import practica1.model.Cultivo;
+import practica1.model.Tratamiento;
 import practica1.repository.CultivoRepository;
 
 @Controller
