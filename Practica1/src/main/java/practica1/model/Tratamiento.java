@@ -8,44 +8,46 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 @Entity
 public class Tratamiento implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="idTratamiento",updatable = false, nullable = false)
-	private Long idTratamiento;
-	@Column(name="cultivo")
-	private String cultivo;
-	@Column(name="producto")
-	private String producto;
+	private long idTratamiento;
+	@ManyToOne
+	@JoinColumn(name="idCultivo")
+	private Cultivo cultivo;
+	@OneToOne
+	private ProductoFitosanitario producto;
 	private String numeroLote;
 	private LocalDate fechaTratamiento;
-	private LocalDate plazoReentrada;
-	private LocalDate plazoRecoleccion;
+	private LocalDate finPlazoReentrada;
+	private LocalDate finPlazoRecoleccion;
 
 	
 	public Tratamiento() {
 
 	}
-	public Tratamiento(String cultivo, 
-			String producto, 
+	public Tratamiento(Cultivo cultivo, 
+			ProductoFitosanitario producto, 
 			String numeroLote) {
 		this.cultivo = cultivo;
 		this.producto = producto;
 		this.numeroLote = numeroLote;
 	}
-	public Tratamiento(String cultivo, 
-			String producto, 
+	public Tratamiento(Cultivo cultivo, 
+			ProductoFitosanitario producto, 
 			String numeroLote, 
-			LocalDate fechaTratamiento,
-			LocalDate plazoReentrada,
-			LocalDate plazoRecoleccion) {
+			LocalDate fechaTratamiento) {
 		this.cultivo = cultivo;
 		this.producto = producto;
 		this.numeroLote = numeroLote;
 		this.fechaTratamiento = fechaTratamiento;
-		this.plazoReentrada = plazoReentrada;
-		this.plazoRecoleccion = plazoRecoleccion;
+		this.finPlazoReentrada = fechaTratamiento.plusDays(producto.getPlazoReentrada());
+		this.finPlazoRecoleccion = fechaTratamiento.plusDays(producto.getPlazoRecoleccion());
 	}
 
 	
@@ -66,19 +68,19 @@ public class Tratamiento implements Serializable {
 		this.idTratamiento = id;
 	}
 
-	public String getCultivo() {
+	public Cultivo getCultivo() {
 		return cultivo;
 	}
 
-	public void setCultivo(String cultivo) {
+	public void setCultivo(Cultivo cultivo) {
 		this.cultivo = cultivo;
 	}
 
-	public String getProducto() {
+	public ProductoFitosanitario getProducto() {
 		return producto;
 	}
 
-	public void setProducto(String producto) {
+	public void setProducto(ProductoFitosanitario producto) {
 		this.producto = producto;
 	}
 
@@ -98,20 +100,20 @@ public class Tratamiento implements Serializable {
 		this.fechaTratamiento = LocalDate.parse(fechaTratamiento);
 	}
 
-	public LocalDate getPlazoReentrada() {
-		return plazoReentrada;
+	public LocalDate getFinPlazoReentrada() {
+		return finPlazoReentrada;
 	}
 
-	public void setPlazoReentrada(String plazoReentrada) {
-		this.plazoReentrada= LocalDate.parse(plazoReentrada);
+	public void setFinPlazoReentrada(String finPlazoReentrada) {
+		this.finPlazoReentrada= LocalDate.parse(finPlazoReentrada);
 	}
 
-	public LocalDate getPlazoRecoleccion() {
-		return plazoRecoleccion;
+	public LocalDate getFinPlazoRecoleccion() {
+		return finPlazoRecoleccion;
 	}
 
-	public void setPlazoRecoleccion(String plazoRecoleccion) {
-		this.plazoRecoleccion = LocalDate.parse(plazoRecoleccion);
+	public void setFinPlazoRecoleccion(String finPlazoRecoleccion) {
+		this.finPlazoRecoleccion = LocalDate.parse(finPlazoRecoleccion);
 	}
 	
 	public void updateTratamiento(Tratamiento trat) {
@@ -119,8 +121,8 @@ public class Tratamiento implements Serializable {
 		this.producto = trat.producto;
 		this.numeroLote = trat.numeroLote;
 		this.fechaTratamiento = trat.fechaTratamiento;
-		this.plazoReentrada = trat.plazoReentrada;
-		this.plazoRecoleccion = trat.plazoRecoleccion;
+		this.finPlazoReentrada = trat.finPlazoReentrada;
+		this.finPlazoRecoleccion = trat.finPlazoRecoleccion;
 	}
 	
 }

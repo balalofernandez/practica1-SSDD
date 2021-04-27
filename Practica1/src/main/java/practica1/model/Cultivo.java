@@ -1,7 +1,7 @@
 package practica1.model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +24,8 @@ public class Cultivo {
 	private LocalDate fechaPlantacion;
 	private String zona;
 	
-	private ArrayList<Tratamiento> tratamientos;
+	@OneToMany(mappedBy="cultivo")
+	private List<Tratamiento> tratamientos;
 	
 	public Cultivo() {
 
@@ -34,7 +35,7 @@ public class Cultivo {
 			String variedad, 
 			LocalDate fechaPlantacion, 
 			String zona, 
-			ArrayList<Tratamiento> tratamientos) {
+			List<Tratamiento> tratamientos) {
 		this.especie = especie;
 		this.variedad = variedad;
 		this.fechaPlantacion = fechaPlantacion;
@@ -52,11 +53,11 @@ public class Cultivo {
 	}
 
 	
-	public ArrayList<Tratamiento> getTratamientos() {
+	public List<Tratamiento> getTratamientos() {
 		return tratamientos;
 	}
 
-	public void setTratamientos(ArrayList<Tratamiento> tratamientos) {
+	public void setTratamientos(List<Tratamiento> tratamientos) {
 		this.tratamientos = tratamientos;
 	}
 

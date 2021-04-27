@@ -23,12 +23,12 @@ public class CultivosController {
 	
 	@PostConstruct
 	public void init() {
-		repCultivos.save(new Cultivo("Mango", "Osteen", LocalDate.of(2020,1,5),"Málaga",new ArrayList<>()));
-		/*repCultivos.save(new Cultivo());
-		repCultivos.save(new Cultivo());
-		repCultivos.save(new Cultivo());
-		repCultivos.save(new Cultivo());
-		repCultivos.save(new Cultivo());*/
+		Cultivo cultivo1 = new Cultivo("Mango", "Osteen", LocalDate.of(2020,1,5),"Málaga",new ArrayList<>());
+		Cultivo cultivo2 = new Cultivo("Papaya", "Maña", LocalDate.of(2020,2,28), "Zaragoza", new ArrayList<>());
+		Cultivo cultivo3 = new Cultivo("Fresa", "Bonita", LocalDate.of(2020,5,30), "Jaén", new ArrayList<>());
+		Cultivo cultivo4 = new Cultivo("Granada", "Fragmentación", LocalDate.of(2020,5,5), "Granada", new ArrayList<>());
+		Cultivo cultivo5 = new Cultivo("Alcachofa", "Flatulenta", LocalDate.of(2020,12,4), "Soria", new ArrayList<>());
+		Cultivo cultivo6 = new Cultivo("Calabaza", "Gorda", LocalDate.of(2020,10,4), "Andorra", new ArrayList<>());
 	}
 
 	@RequestMapping("/cultivos")

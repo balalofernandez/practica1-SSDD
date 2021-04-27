@@ -10,10 +10,10 @@ import practica1.model.*;
 
 public interface TratamientoRepository extends JpaRepository<Tratamiento, Long> {
 	Tratamiento findById(long Id);
-	List<Tratamiento> findByPlazoReentrada(LocalDate PlazoReentrada);
-	List<Tratamiento> findByPlazoRecoleccion(LocalDate PlazoRecoleccion);
+	List<Tratamiento> findByFinPlazoReentrada(LocalDate PlazoReentrada);
+	List<Tratamiento> findByFinPlazoRecoleccion(LocalDate PlazoRecoleccion);
 	List<Tratamiento> findByFechaTratamiento(LocalDate PlazoRecoleccion);
-	List<Tratamiento> findByCultivo(String cultivo);
-	List<Tratamiento> findByProducto(String producto);
+	List<Tratamiento> findByCultivoEspecie(String cultivo);
+	List<Tratamiento> findByProductoNombre(String producto);
 	List<Tratamiento> findByNumeroLote(String producto);
 }
