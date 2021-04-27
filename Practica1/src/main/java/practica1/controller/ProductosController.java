@@ -53,6 +53,32 @@ public class TratamientosController {
             } 
             return "/productosFitosanitarios/mostrarProductos"
     }
+
+    @RequestMapping("/modificarProducto")
+    public String modificarProducto(
+        @RequestParam(value = "id") Long id,
+        Model model){
+            model.addAttribute("producto", repProductoFitosanitario.getOne(id));
+
+            return "/productosFitosanitarios/modificarProducto"
+        }
+
+    @RequestMapping("/insertarProducto")
+    public String insertarProducto(
+        Model model){
+           return "/productosFitosanitarios/insertarProducto" 
+        }
+
+    @RequestMapping("/nuevoProducto")
+    public String nuevoProducto(
+        ProductoFitosanitario producto,
+        Model model){
+            repProductoFitosanitario.save(producto);
+            model.addAttribute("msg", "Se ha añadido un nuevo producto");
+
+            return 
+        }
+    
 }
 
 
