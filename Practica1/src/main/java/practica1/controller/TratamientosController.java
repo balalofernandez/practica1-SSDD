@@ -46,19 +46,19 @@ public class TratamientosController {
 			model.addAttribute("tratamientos",repTratamientos.findByCultivo(cultivo));
 		}
 		else if(producto != null && producto != "") {
-			model.addAttribute("tratamientos",repTratamientos.findByCultivo(producto));
+			model.addAttribute("tratamientos",repTratamientos.findByProducto(producto));
 		}
 		else if(numeroLote != null && numeroLote != "") {
-			model.addAttribute("tratamientos",repTratamientos.findByCultivo(numeroLote));
+			model.addAttribute("tratamientos",repTratamientos.findByNumeroLote(numeroLote));
 		}
 		else if(fechaTratamiento != null && fechaTratamiento != "") {
 			model.addAttribute("tratamientos",repTratamientos.findByFechaTratamiento(LocalDate.parse(fechaTratamiento)));
 		}
 		else if(plazoReentrada != null && plazoReentrada != "") {
-			model.addAttribute("tratamientos",repTratamientos.findByFechaTratamiento(LocalDate.parse(plazoReentrada)));
+			model.addAttribute("tratamientos",repTratamientos.findByPlazoReentrada(LocalDate.parse(plazoReentrada)));
 		}
 		else if(plazoRecoleccion != null && plazoRecoleccion != "") {
-			model.addAttribute("tratamientos",repTratamientos.findByFechaTratamiento(LocalDate.parse(plazoRecoleccion)));
+			model.addAttribute("tratamientos",repTratamientos.findByPlazoRecoleccion(LocalDate.parse(plazoRecoleccion)));
 		}
 		else {
 			model.addAttribute("tratamientos", repTratamientos.findAll());

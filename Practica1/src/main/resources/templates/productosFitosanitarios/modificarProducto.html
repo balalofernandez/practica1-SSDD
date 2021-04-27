@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Tratamientos</title>
+<title>Modificar Producto</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <script src="extensions/filter-control/bootstrap-table-filter-control.js"></script>
@@ -14,16 +14,16 @@ th:href="@{/css/estilos.css}"/>
 <body>
 	<div class="container-fluid">
 	<ul class="nav nav-pills" >
-	  <li role="presentation" class="active"><a href="/tratamientos">Tratamientos</a></li>
+	  <li role="presentation" ><a href="/tratamientos">Tratamientos</a></li>
 	  <li role="presentation"><a href="/cultivos">Cultivos</a></li>
-	  <li role="presentation"><a href="/productosFitosanitarios">Productos Fitosanitarios</a></li>
+	  <li role="presentation" class="active"><a href="/productosFitosanitarios">Productos Fitosanitarios</a></li>
 	</ul>
 	
 	<div class="page-header">
 		  <h1>Modifica tu producto fitosanitario:</h1>
 		</div>
 		<div class="container">
-			<form class="form-horizontal" th:action="@{/modificarProducto(id=${producto.idProducto})}" method="post">
+			<form class="form-horizontal" th:action="@{/productoModificado(id=${producto.idProducto})}" method="post">
 			  <div class="form-group">
 			    <label class="col-sm-2 control-label">ID</label>
 			    <div class="col-sm-10">
@@ -31,7 +31,7 @@ th:href="@{/css/estilos.css}"/>
 			    </div>
 			  </div>
 			  <div class="form-group">
-			    <label for="inputText" class="col-sm-2 control-label">Descripcion</label>
+			    <label for="inputText" class="col-sm-2 control-label">Descripción</label>
 			    <div class="col-sm-10">
 			      <input type="text" class="form-control" id="inputText" placeholder="Descripcion" th:value="${producto.descripcion}" name="descripcion">
 			    </div>
@@ -46,13 +46,13 @@ th:href="@{/css/estilos.css}"/>
 			  <div class="form-group">
 			    <label for="inputText" class="col-sm-2 control-label">Plazo de reentrada</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="inputText" placeholder="plazo de reentrada" th:value="${tratamiento.plazoReentrada}" name="plazoReentrada">
+			      <input type="text" class="form-control" id="inputText" placeholder="plazo de reentrada" th:value="${producto.plazoReentrada}" name="plazoReentrada">
 			    </div>
 			  </div>
 			  <div class="form-group">
-			    <label for="inputText" class="col-sm-2 control-label">Plazo de recoleccion</label>
+			    <label for="inputText" class="col-sm-2 control-label">Plazo de recolección</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="inputText" placeholder="plazo de recoleccion" th:value="${tratamiento.plazoRecoleccion}" name="plazoRecoleccion">
+			      <input type="text" class="form-control" id="inputText" placeholder="plazo de recoleccion" th:value="${producto.plazoRecoleccion}" name="plazoRecoleccion">
 			    </div>
 			  </div>
 			  <input type="submit" class="btn btn-primary" name="enviar" value="Modificar">

@@ -10,11 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import practica1.model.ProductoFitosanitario;
 import practica1.model.Tratamiento;
+import practica1.repository.ProductoFitosanitarioRepository;
 import practica1.repository.TratamientoRepository;
 
 @Controller
-public class TratamientosController {
+public class ProductosController {
     @Autowired
     private ProductoFitosanitarioRepository repProductoFitosanitario;
 	
@@ -29,15 +31,15 @@ public class TratamientosController {
 
     @RequestMapping("/productosFitosanitarios")
     public String productosFitosanitarios(
-        @RequestParam(value = "producto") Long producto,
-        @RequestParam(value = "descripcion", required = "false") String descripcion,
-        @RequestParam(value = "nombre" String nombre,
-        @RequestParam(value = "plazoReentrada" Long plazoReentrada,
-        @RequestParam(value = "plazoRecoleccion" Long plazoRecoleccion,
+        @RequestParam(required = false) Long producto,
+        @RequestParam(required = false) String descripcion,
+        @RequestParam(required = false) String nombre,
+        @RequestParam(required = false) Long plazoReentrada,
+        @RequestParam(required = false) Long plazoRecoleccion,
         Model model){
             if (producto != null && producto > 0){
                 System.out.println(producto);
-                model.addAttribute("productos", repProductoFitosanitario.getOne(ProductoFitosanitario));
+                model.addAttribute("productos", repProductoFitosanitario.getOne(producto));
             }
             else if (nombre != null && nombre != ""){
                 model.addAttribute("productos", repProductoFitosanitario.findByNombre(nombre));
@@ -49,9 +51,9 @@ public class TratamientosController {
                 model.addAttribute("productos", repProductoFitosanitario.findByPlazoRecoleccion(plazoRecoleccion));
             }
             else{
-                model.addAttribute("productos", repProductoFitosanitario.findAll())
+                model.addAttribute("productos", repProductoFitosanitario.findAll());
             } 
-            return "/productosFitosanitarios/mostrarProductos"
+            return "/productosFitosanitarios/mostrarProductos";
     }
 
     @RequestMapping("/modificarProducto")
@@ -60,24 +62,48 @@ public class TratamientosController {
         Model model){
             model.addAttribute("producto", repProductoFitosanitario.getOne(id));
 
-            return "/productosFitosanitarios/modificarProducto"
+            return "/productosFitosanitarios/modificarProducto";
         }
+    
+    @RequestMapping("/productoModificado")
+	public String tratamientoModificado(
+			@RequestParam(value="enviar", required = false) String enviar,
+			@RequestParam long id,
+			ProductoFitosanitario producto,
+			Model model) {
+		
+		if(enviar != null) {
+			ProductoFitosanitario prod= repProductoFitosanitario.getOne(id);
+			prod.updateProducto(producto);
+			repProductoFitosanitario.save(prod);
+		}
+		model.addAttribute("path","productosFitosanitarios");
+		model.addAttribute("mensaje","Se ha modificado el producto con éxito");
+		
+		return "ModificadoConExito";
+	}
 
     @RequestMapping("/insertarProducto")
     public String insertarProducto(
         Model model){
-           return "/productosFitosanitarios/insertarProducto" 
+           return "/productosFitosanitarios/insertarProducto";
         }
 
     @RequestMapping("/nuevoProducto")
     public String nuevoProducto(
+    	@RequestParam(value="enviar", required = false) String enviar,
         ProductoFitosanitario producto,
         Model model){
-            repProductoFitosanitario.save(producto);
-            model.addAttribute("msg", "Se ha añadido un nuevo producto");
-
-            return 
-        }
+            
+        		
+		if(enviar != null) {
+			repProductoFitosanitario.save(producto);
+		}
+		model.addAttribute("path","productosFitosanitarios");
+		model.addAttribute("mensaje","Se ha insertado el producto con éxito");
+		
+		return "InsertadoConExito.html";
+    }
     
 }
 

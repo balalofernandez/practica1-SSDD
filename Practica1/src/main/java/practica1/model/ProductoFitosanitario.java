@@ -4,7 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
+
+import com.sun.istack.NotNull;
 
 @Entity
 public class ProductoFitosanitario {
@@ -14,23 +15,23 @@ public class ProductoFitosanitario {
 	private long idProducto;
 	
 	private String descripcion;
-	@NotBlank
+	@NotNull
 	private String nombre;
-	private Long plazoReentrada;
-	private Long plazoRecoleccion;
+	private long plazoReentrada;
+	private long plazoRecoleccion;
 
 	
 	public ProductoFitosanitario() {
 
 	}
 
-	public ProductoFitosanitario(String nombre, Long plazoReentrada, Long plazoRecoleccion){
+	public ProductoFitosanitario(String nombre, long plazoReentrada, long plazoRecoleccion){
 		this.nombre = nombre;
 		this.plazoReentrada = plazoReentrada;
 		this.plazoRecoleccion = plazoRecoleccion;
 	}
 
-	public ProductoFitosanitario(String nombre, Long plazoRecoleccion){
+	public ProductoFitosanitario(String nombre, long plazoRecoleccion){
 		this.nombre = nombre;
 		this.plazoReentrada = 0;
 		this.plazoRecoleccion = plazoRecoleccion;
@@ -87,5 +88,11 @@ public class ProductoFitosanitario {
 
 	public void setPlazoRecoleccion(Long plazoRecoleccion) {
 		this.plazoRecoleccion = plazoRecoleccion;
+	}
+	public void updateProducto(ProductoFitosanitario prod) {
+		this.descripcion = prod.getDescripcion();
+		this.nombre = prod.getNombre();
+		this.plazoReentrada = prod.getPlazoReentrada();
+		this.plazoRecoleccion = prod.getPlazoRecoleccion();
 	}
 }
