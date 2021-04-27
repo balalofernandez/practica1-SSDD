@@ -2,6 +2,7 @@ package practica1.controller;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.annotation.PostConstruct;
 
@@ -38,8 +39,25 @@ public class TratamientosController {
 		ProductoFitosanitario producto1 = new ProductoFitosanitario("Hierro", 4, 10);
 		ProductoFitosanitario producto2 = new ProductoFitosanitario("Azufre", 3, 5);
 		ProductoFitosanitario producto3 = new ProductoFitosanitario("Fosfato de Hierro", 7, 3);
-		ProductoFitosanitario producto4 = new ProductoFitosanitario("Nitrato de Amonio", 4);
+		ProductoFitosanitario producto4 = new ProductoFitosanitario("Nitrato de Amonio", 4);//Plazo de recoleccion pero no de entrada
 		ProductoFitosanitario producto5 = new ProductoFitosanitario("Sulfato de Cobre");
+		Tratamiento t1 = new Tratamiento(cultivo1,producto4,"ES5165",LocalDate.of(2020,4,5));
+		Tratamiento t2 = new Tratamiento(cultivo1,producto1,"ES4816",LocalDate.of(2020,4,5));
+		Tratamiento t3 = new Tratamiento(cultivo1,producto2,"ES8816",LocalDate.of(2020,4,5));
+		cultivo1.setTratamientos(new ArrayList<Tratamiento>(Arrays.asList(t1,t2,t3)));
+		Tratamiento t4 = new Tratamiento(cultivo2,producto1,"AS4719",LocalDate.of(2020,4,5));
+		Tratamiento t5 = new Tratamiento(cultivo2,producto3,"JK4194",LocalDate.of(2020,4,5));
+		cultivo2.setTratamientos(new ArrayList<Tratamiento>(Arrays.asList(t4,t5)));
+		Tratamiento t6 = new Tratamiento(cultivo3,producto1,"JK4194",LocalDate.of(2020,4,5));
+		cultivo3.addTratamientos(t6);
+		Tratamiento t7 = new Tratamiento(cultivo4,producto1,"PP1654",LocalDate.of(2020,4,5));
+		cultivo4.addTratamientos(t7);
+		Tratamiento t8 = new Tratamiento(cultivo5,producto5,"RS1784",LocalDate.of(2020,4,5));
+		cultivo5.addTratamientos(t8);
+		repCultivos.saveAll(new ArrayList<Cultivo>(Arrays.asList(cultivo1,cultivo2,cultivo3,cultivo4,cultivo5,cultivo6)));
+		repProductos.saveAll(new ArrayList<ProductoFitosanitario>(Arrays.asList(producto1,producto2,producto3,producto4,producto5)));
+		repTratamientos.saveAll(new ArrayList<Tratamiento>(Arrays.asList(t1,t2,t3,t4,t5,t6,t7,t8)));
+		
 	}
 
 
@@ -122,18 +140,27 @@ public class TratamientosController {
 	@RequestMapping("/insertarTratamiento")
 	public String tratamientos(
 			Model model) {
-					
+		
+		model.addAttribute("cultivos",repCultivos.findAll());
+		model.addAttribute("productos",repProductos.findAll());
 		return "/tratamientos/insertarTratamiento";
 	}
 	
 	@RequestMapping("/nuevoTratamiento")
 	public String nuevoTratamiento(
 			@RequestParam(value="enviar", required = false) String enviar,
+			@RequestParam(value="cultivo", required = false) Long cultivo,
+			@RequestParam(value="producto", required = false) Long producto,
 			Tratamiento tratamiento,
 			Model model) {
 		
 		if(enviar != null) {
 			repTratamientos.save(tratamiento);
+			Cultivo c = repCultivos.getOne(cultivo);
+			ProductoFitosanitario p = repProductos.getOne(producto);
+			tratamiento.setCultivo(c);
+			tratamiento.setProducto(p);
+			c.addTratamientos(tratamiento);
 		}
 		model.addAttribute("path","tratamientos");
 		model.addAttribute("mensaje","Se ha insertado el tratamiento con éxito");

@@ -19,15 +19,6 @@ import practica1.repository.TratamientoRepository;
 public class ProductosController {
     @Autowired
     private ProductoFitosanitarioRepository repProductoFitosanitario;
-	
-	@PostConstruct
-	public void init() {
-        repProductoFitosanitario.save(new ProductoFitosanitario("Hierro", 4, 10));
-        repProductoFitosanitario.save(new ProductoFitosanitario("Azufre", 3, 5));
-        repProductoFitosanitario.save(new ProductoFitosanitario("Fosfato de Hierro", 7, 3));
-        repProductoFitosanitario.save(new ProductoFitosanitario("Nitrato de Amonio", 4));
-        repProductoFitosanitario.save(new ProductoFitosanitario("Sulfato de Cobre"));
-    }
 
     @RequestMapping("/productosFitosanitarios")
     public String productosFitosanitarios(

@@ -5,6 +5,7 @@
 <title>Cultivos</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="extensions/filter-control/bootstrap-table-filter-control.css">
 <script src="extensions/filter-control/bootstrap-table-filter-control.js"></script>
 <link rel="stylesheet" type="text/css"
@@ -56,15 +57,9 @@ th:href="@{/css/estilos.css}"/>
 	                <td><p th:text="${cultivo.fechaPlantacion}"></p></td>
 	                <td><p th:text="${cultivo.zona}"></p></td>
 	                <td>
-					<div class="dropdown">
-					  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-					    Tratamientos
-					    <span class="caret"></span>
-					  </button>
-					  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" th:each=" tratamiento:${cultivo.tratamientos}">
-					    <!-- <li><a th:href="@{/mostrarTratamientos(tratamiento=${tratamiento.idTratamiento})}" th:text="tratamiento.idTratamiento"></a></li>-->
-					   </ul>
-					</div>
+					<select name="Tratamientos" id="tratamientos" class="selectpicker form-control">
+						<option th:each=" tratamiento:${cultivo.tratamientos}" th:text="${tratamiento.idTratamiento}" ></option>
+					</select>
 					</td>
 	                <td>
 	                	<a th:href="@{/modificarCultivo(id=${cultivo.idCultivo})}" class="btn btn-default btn-lg">

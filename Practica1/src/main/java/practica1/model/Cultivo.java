@@ -60,6 +60,10 @@ public class Cultivo {
 	public void setTratamientos(List<Tratamiento> tratamientos) {
 		this.tratamientos = tratamientos;
 	}
+	
+	public void addTratamientos(Tratamiento t) {
+		this.tratamientos.add(t);
+	}
 
 	public String getEspecie() {
 		return especie;
@@ -67,12 +71,7 @@ public class Cultivo {
 	public void setEspecie(String especie) {
 		this.especie = especie;
 	}
-
-
-	public void setId(String especie) {
-		this.especie = especie;
-	}
-
+	
 	public String getVariedad() {
 		return variedad;
 	}
@@ -106,8 +105,7 @@ public class Cultivo {
 
 	@Override
 	public String toString() {
-		return "Cultivo [idcultivo=" + idcultivo + ", variedad=" + variedad + ", fechaPlantacion=" + fechaPlantacion + ", zona="
-				+ zona + "]";
+		return especie;
 	}
 
 }

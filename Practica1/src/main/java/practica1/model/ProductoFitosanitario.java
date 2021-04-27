@@ -95,4 +95,9 @@ public class ProductoFitosanitario {
 		this.plazoReentrada = prod.getPlazoReentrada();
 		this.plazoRecoleccion = prod.getPlazoRecoleccion();
 	}
+	
+	@Override
+	public String toString() {
+		return nombre;
+	}
 }

@@ -82,6 +82,8 @@ public class Tratamiento implements Serializable {
 
 	public void setProducto(ProductoFitosanitario producto) {
 		this.producto = producto;
+		this.finPlazoReentrada = fechaTratamiento.plusDays(producto.getPlazoReentrada());
+		this.finPlazoRecoleccion = fechaTratamiento.plusDays(producto.getPlazoRecoleccion());
 	}
 
 	public String getNumeroLote() {
