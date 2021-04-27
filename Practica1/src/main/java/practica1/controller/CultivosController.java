@@ -62,7 +62,7 @@ public class CultivosController {
 			model.addAttribute("cultivos", repCultivos.findAll());
 		}
 		
-		return "/cultivos/mostrarCultivos";
+		return "/cultivos/mostrarCultivosnue";
 	}
 	
 	
