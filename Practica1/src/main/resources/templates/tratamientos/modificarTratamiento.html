@@ -22,6 +22,7 @@ th:href="@{/css/estilos.css}"/>
 	<div class="page-header">
 		  <h1>Modifica tu tratamiento:</h1>
 		</div>
+		
 		<div class="container">
 			<form class="form-horizontal" th:action="@{/tratamientoModificado(id=${tratamiento.idTratamiento})}" method="post">
 			  <div class="form-group">
@@ -30,40 +31,39 @@ th:href="@{/css/estilos.css}"/>
 			      <input type="text" class="form-control" id="inputText" placeholder="ID"  th:value="${tratamiento.idTratamiento}" disabled>
 			    </div>
 			  </div>
-			  <div class="form-group">
-			    <label for="inputText" class="col-sm-2 control-label">Cultivo</label>
-			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="inputText" placeholder="cultivo" th:value="${tratamiento.cultivo.especie}" name="cultivo">
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label for="inputText" class="col-sm-2 control-label">Producto</label>
-			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="inputText" placeholder="producto" th:value="${tratamiento.producto.nombre}" name="producto">
-			    </div>
-			  </div>
+			  
+		  <div class="form-group">
+		    <label for="inputText" class="col-sm-2 control-label">Elige entre los cultivos:</label>
+		    <div class="col-sm-8">
+		    	<select name="cultivo" id="tratamientos" class="selectpicker form-control">
+					<option th:each=" cultivo:${cultivos}" th:text="${cultivo}" th:value="${cultivo.idCultivo}" th:selected="${cultivo == tratamiento.cultivo}"></option>
+				</select>
+		    </div>
+		    <div class="col-sm-2">
+		    	<a class="btn btn-primary" name="nuevoTratamiento" href="/insertarCultivo" >Crea un nuevo Cultivo</a>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputText" class="col-sm-2 control-label">Producto</label>
+		    <div class="col-sm-8">
+		    	<select name="producto"  id="tratamientos" class="selectpicker form-control">
+					<option  th:each=" producto:${productos}" th:text="${producto}" th:value="${producto.idProducto}" th:selected="${producto== tratamiento.producto}"></option>
+				</select>
+		    </div>
+		    <div class="col-sm-2">
+		    	<a class="btn btn-primary" name="nuevoTratamiento" href="/insertarProducto" >Crea un nuevo Producto</a>
+		    </div>
+		    </div>
 			  <div class="form-group">
 			    <label for="inputText" class="col-sm-2 control-label">Numero de Lote</label>
-			    <div class="col-sm-10">
+			    <div class="col-sm-8">
 			      <input type="text" class="form-control" id="inputText" placeholder="numero de lote" th:value="${tratamiento.numeroLote}" name="numeroLote">
 			    </div>
 			  </div>
 			  <div class="form-group">
 			    <label for="inputText" class="col-sm-2 control-label">Fecha de tratamiento</label>
-			    <div class="col-sm-10">
+			    <div class="col-sm-8">
 			      <input type="text" class="form-control" id="inputText" placeholder="fecha de tratamiento" th:value="${tratamiento.fechaTratamiento}" name="fechaTratamiento">
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label for="inputText" class="col-sm-2 control-label">Plazo de reentrada</label>
-			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="inputText" placeholder="plazo de reentrada" th:value="${tratamiento.finPlazoReentrada}" name="finPlazoReentrada">
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label for="inputText" class="col-sm-2 control-label">Plazo de recoleccion</label>
-			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="inputText" placeholder="plazo de recoleccion" th:value="${tratamiento.finPlazoRecoleccion}" name="finPlazoRecoleccion">
 			    </div>
 			  </div>
 			  <input type="submit" class="btn btn-primary" name="enviar" value="Modificar">

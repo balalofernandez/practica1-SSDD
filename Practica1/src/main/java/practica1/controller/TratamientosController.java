@@ -45,14 +45,14 @@ public class TratamientosController {
 		Tratamiento t2 = new Tratamiento(cultivo1,producto1,"ES4816",LocalDate.of(2020,4,5));
 		Tratamiento t3 = new Tratamiento(cultivo1,producto2,"ES8816",LocalDate.of(2020,4,5));
 		cultivo1.setTratamientos(new ArrayList<Tratamiento>(Arrays.asList(t1,t2,t3)));
-		Tratamiento t4 = new Tratamiento(cultivo2,producto1,"AS4719",LocalDate.of(2020,4,5));
-		Tratamiento t5 = new Tratamiento(cultivo2,producto3,"JK4194",LocalDate.of(2020,4,5));
+		Tratamiento t4 = new Tratamiento(cultivo2,producto1,"AS4719",LocalDate.of(2020,8,5));
+		Tratamiento t5 = new Tratamiento(cultivo2,producto3,"JK4194",LocalDate.of(2020,3,23));
 		cultivo2.setTratamientos(new ArrayList<Tratamiento>(Arrays.asList(t4,t5)));
-		Tratamiento t6 = new Tratamiento(cultivo3,producto1,"JK4194",LocalDate.of(2020,4,5));
+		Tratamiento t6 = new Tratamiento(cultivo3,producto1,"JK4194",LocalDate.of(2020,11,5));
 		cultivo3.addTratamientos(t6);
-		Tratamiento t7 = new Tratamiento(cultivo4,producto1,"PP1654",LocalDate.of(2020,4,5));
+		Tratamiento t7 = new Tratamiento(cultivo4,producto1,"PP1654",LocalDate.of(2020,10,9));
 		cultivo4.addTratamientos(t7);
-		Tratamiento t8 = new Tratamiento(cultivo5,producto5,"RS1784",LocalDate.of(2020,4,5));
+		Tratamiento t8 = new Tratamiento(cultivo5,producto5,"RS1784",LocalDate.of(2020,2,22));
 		cultivo5.addTratamientos(t8);
 		repCultivos.saveAll(new ArrayList<Cultivo>(Arrays.asList(cultivo1,cultivo2,cultivo3,cultivo4,cultivo5,cultivo6)));
 		repProductos.saveAll(new ArrayList<ProductoFitosanitario>(Arrays.asList(producto1,producto2,producto3,producto4,producto5)));
@@ -88,7 +88,7 @@ public class TratamientosController {
 		else if(numeroLote != null && numeroLote != "") {
 			model.addAttribute("tratamientos",repTratamientos.findByNumeroLote(numeroLote));
 		}
-		else if(fechaTratamiento != null && fechaTratamiento != "") {
+		else if(fechaTratamiento != null && fechaTratamiento !="") {
 			model.addAttribute("tratamientos",repTratamientos.findByFechaTratamiento(LocalDate.parse(fechaTratamiento)));
 		}
 		else if(plazoReentrada != null && plazoReentrada != "") {
@@ -104,14 +104,63 @@ public class TratamientosController {
 		return "/tratamientos/mostrarTratamientos";
 	}
 	
-	
+	//ORDENAR TRATAMIENTOS
+	@RequestMapping(value="/ordenaTratamientos")
+	public String ordenaTratamientos(@RequestParam String por,Model model) {
+		switch(por) {
+		case "AI":
+			model.addAttribute("tratamientos",repTratamientos.findAllByOrderByIdTratamientoAsc());
+			break;
+		case "DI":
+			model.addAttribute("tratamientos",repTratamientos.findAllByOrderByIdTratamientoDesc());
+			break;
+		case "AC":
+			model.addAttribute("tratamientos",repTratamientos.findAllByOrderByCultivoEspecieAsc());
+			break;
+		case "DC":
+			model.addAttribute("tratamientos",repTratamientos.findAllByOrderByCultivoEspecieDesc());
+			break;
+		case "AP":
+			model.addAttribute("tratamientos",repTratamientos.findAllByOrderByProductoNombreAsc());
+			break;
+		case "DP":
+			model.addAttribute("tratamientos",repTratamientos.findAllByOrderByProductoNombreDesc());
+			break;
+		case "ANL":
+			model.addAttribute("tratamientos",repTratamientos.findAllByOrderByNumeroLoteAsc());
+			break;
+		case "DNL":
+			model.addAttribute("tratamientos",repTratamientos.findAllByOrderByNumeroLoteDesc());
+			break;
+		case "AFT":
+			model.addAttribute("tratamientos",repTratamientos.findAllByOrderByFechaTratamientoAsc());
+			break;
+		case "DFT":
+			model.addAttribute("tratamientos",repTratamientos.findAllByOrderByFechaTratamientoDesc());
+			break;
+		case "APRec":
+			model.addAttribute("tratamientos",repTratamientos.findAllByOrderByFinPlazoRecoleccionAsc());
+			break;
+		case "DPRec":
+			model.addAttribute("tratamientos",repTratamientos.findAllByOrderByFinPlazoRecoleccionDesc());
+			break;
+		case "APRee":
+			model.addAttribute("tratamientos",repTratamientos.findAllByOrderByFinPlazoReentradaAsc());
+			break;
+		case "DPRee":
+			model.addAttribute("tratamientos",repTratamientos.findAllByOrderByFinPlazoReentradaDesc());
+			break;
+		}
+		return "/tratamientos/mostrarTratamientos";
+	}
 	//MODIFICAR TRATAMIENTO
 	
 	@RequestMapping("/modificarTratamiento")
 	public String modificarTratamiento(
 			@RequestParam long id,
 			Model model) {
-			
+		model.addAttribute("cultivos",repCultivos.findAll());
+		model.addAttribute("productos",repProductos.findAll());			
 		model.addAttribute("tratamiento", repTratamientos.getOne(id));
 		
 		return "/tratamientos/modificarTratamiento";
@@ -138,7 +187,7 @@ public class TratamientosController {
 	//NUEVO TRATAMIENTO
 	
 	@RequestMapping("/insertarTratamiento")
-	public String tratamientos(
+	public String insertaTratamientos(
 			Model model) {
 		
 		model.addAttribute("cultivos",repCultivos.findAll());
