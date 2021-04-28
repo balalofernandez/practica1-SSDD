@@ -37,5 +37,30 @@ public interface TratamientoRepository extends JpaRepository<Tratamiento, Long> 
 			LocalDate f1, LocalDate f2, LocalDate f3, LocalDate f4);
 	List<Tratamiento> findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByIdTratamientoDesc(
 			LocalDate f1, LocalDate f2, LocalDate f3, LocalDate f4);
+	List<Tratamiento> findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByCultivoEspecieAsc(
+			LocalDate f1, LocalDate f2, LocalDate f3, LocalDate f4);
+	List<Tratamiento> findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByCultivoEspecieDesc(
+			LocalDate f1, LocalDate f2, LocalDate f3, LocalDate f4);
+	List<Tratamiento> findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByProductoNombreAsc(
+			LocalDate f1, LocalDate f2, LocalDate f3, LocalDate f4);
+	List<Tratamiento> findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByProductoNombreDesc(
+			LocalDate f1, LocalDate f2, LocalDate f3, LocalDate f4);
+	List<Tratamiento> findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByNumeroLoteAsc(
+			LocalDate f1, LocalDate f2, LocalDate f3, LocalDate f4);
+	List<Tratamiento> findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByNumeroLoteDesc(
+			LocalDate f1, LocalDate f2, LocalDate f3, LocalDate f4);
+	List<Tratamiento> findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByFechaTratamientoAsc(
+			LocalDate f1, LocalDate f2, LocalDate f3, LocalDate f4);
+	List<Tratamiento> findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByFechaTratamientoDesc(
+			LocalDate f1, LocalDate f2, LocalDate f3, LocalDate f4);
+	List<Tratamiento> findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByFinPlazoRecoleccionAsc(
+			LocalDate f1, LocalDate f2, LocalDate f3, LocalDate f4);
+	List<Tratamiento> findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByFinPlazoRecoleccionDesc(
+			LocalDate f1, LocalDate f2, LocalDate f3, LocalDate f4);
+	List<Tratamiento> findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByFinPlazoReentradaAsc(
+			LocalDate f1, LocalDate f2, LocalDate f3, LocalDate f4);
+	List<Tratamiento> findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByFinPlazoReentradaDesc(
+			LocalDate f1, LocalDate f2, LocalDate f3, LocalDate f4);
+	
 	
 }
