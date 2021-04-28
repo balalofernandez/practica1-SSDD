@@ -237,7 +237,7 @@ public class TratamientosController {
 				case "AI":
 					model.addAttribute("tratamientos",
 							repTratamientos.findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByIdTratamientoAsc(
-							fecha, fecha, fecha, fecha));
+							fecha.plusDays(-1), fecha.plusDays(1), fecha.plusDays(-1), fecha.plusDays(1)));
 					break;
 				case "DI":
 					model.addAttribute("tratamientos",
@@ -245,40 +245,64 @@ public class TratamientosController {
 							fecha.plusDays(-1), fecha.plusDays(1), fecha.plusDays(-1), fecha.plusDays(1)));
 					break;
 				case "AC":
-					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByCultivoEspecieAsc());
+					model.addAttribute("tratamientos",
+							repTratamientos.findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByCultivoEspecieAsc(
+							fecha.plusDays(-1), fecha.plusDays(1), fecha.plusDays(-1), fecha.plusDays(1)));
 					break;
 				case "DC":
-					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByCultivoEspecieDesc());
+					model.addAttribute("tratamientos",
+							repTratamientos.findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByCultivoEspecieDesc(
+							fecha.plusDays(-1), fecha.plusDays(1), fecha.plusDays(-1), fecha.plusDays(1)));
 					break;
 				case "AP":
-					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByProductoNombreAsc());
+					model.addAttribute("tratamientos",
+							repTratamientos.findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByProductoNombreAsc(
+							fecha.plusDays(-1), fecha.plusDays(1), fecha.plusDays(-1), fecha.plusDays(1)));
 					break;
 				case "DP":
-					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByProductoNombreDesc());
+					model.addAttribute("tratamientos",
+							repTratamientos.findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByProductoNombreDesc(
+							fecha.plusDays(-1), fecha.plusDays(1), fecha.plusDays(-1), fecha.plusDays(1)));
 					break;
 				case "ANL":
-					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByNumeroLoteAsc());
+					model.addAttribute("tratamientos",
+							repTratamientos.findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByNumeroLoteAsc(
+							fecha.plusDays(-1), fecha.plusDays(1), fecha.plusDays(-1), fecha.plusDays(1)));
 					break;
 				case "DNL":
-					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByNumeroLoteDesc());
+					model.addAttribute("tratamientos",
+							repTratamientos.findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByNumeroLoteDesc(
+							fecha.plusDays(-1), fecha.plusDays(1), fecha.plusDays(-1), fecha.plusDays(1)));
 					break;
 				case "AFT":
-					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByFechaTratamientoAsc());
+					model.addAttribute("tratamientos",
+							repTratamientos.findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByFechaTratamientoAsc(
+							fecha.plusDays(-1), fecha.plusDays(1), fecha.plusDays(-1), fecha.plusDays(1)));
 					break;
 				case "DFT":
-					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByFechaTratamientoDesc());
+					model.addAttribute("tratamientos",
+							repTratamientos.findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByFechaTratamientoDesc(
+							fecha.plusDays(-1), fecha.plusDays(1), fecha.plusDays(-1), fecha.plusDays(1)));
 					break;
 				case "APRec":
-					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByFinPlazoRecoleccionAsc());
+					model.addAttribute("tratamientos",
+							repTratamientos.findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByFinPlazoRecoleccionAsc(
+							fecha.plusDays(-1), fecha.plusDays(1), fecha.plusDays(-1), fecha.plusDays(1)));
 					break;
 				case "DPRec":
-					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByFinPlazoRecoleccionDesc());
+					model.addAttribute("tratamientos",
+							repTratamientos.findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByFinPlazoRecoleccionDesc(
+							fecha.plusDays(-1), fecha.plusDays(1), fecha.plusDays(-1), fecha.plusDays(1)));
 					break;
 				case "APRee":
-					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByFinPlazoReentradaAsc());
+					model.addAttribute("tratamientos",
+							repTratamientos.findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByFinPlazoReentradaAsc(
+							fecha.plusDays(-1), fecha.plusDays(1), fecha.plusDays(-1), fecha.plusDays(1)));
 					break;
 				case "DPRee":
-					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByFinPlazoReentradaDesc());
+					model.addAttribute("tratamientos",
+							repTratamientos.findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByFinPlazoReentradaDesc(
+							fecha.plusDays(-1), fecha.plusDays(1), fecha.plusDays(-1), fecha.plusDays(1)));
 					break;
 				default:
 					model.addAttribute("tratamientos", 

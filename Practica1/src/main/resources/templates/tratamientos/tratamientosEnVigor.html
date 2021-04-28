@@ -27,8 +27,8 @@
 	<div class="page-header">
 	  <h1>Tus tratamientos</h1>
 	</div>
-	<p>
-	En esta pÃ¡gina te mostraremos los tratamientos que aún están en vigor.
+	<p th:text="'En esta página te mostraremos los tratamientos que aún están en vigor a fecha de ' + ${fechaIntroducida}">
+
 	</p>
 	
 	<a href="/insertarTratamiento">Insertar Nuevo Tratamiento</a>
@@ -40,7 +40,7 @@
                         <th>
                         	<div id="columna">
                         	<div class="col-sm-8">
-                       			<input type="number" class="form-control" placeholder="Tratamiento" name="tratamiento" id="tratamiento">
+                       			<b> Tratamiento </b>
                        		</div>
                        		<div class="col-sm-2">
                        			<a th:href="@{/tratamientosEnVigor(por=AI,fechaIntroducida=${fechaIntroducida})}"><img th:src="@{assets/img/up.png}"/></a>
@@ -50,63 +50,59 @@
                         </th>
                         <th class="col-xs">
                        		<div class="col-sm-8">
-                       			<input type="text" class="form-control" placeholder="Cultivo" name="cultivo" id="cultivo">
+                       			<b> Cultivo </b>
                        		</div>
                        		<div class="col-sm-2">
-                       			<a th:href="@{/tratamientosEnVigor?por=AC}"><img th:src="@{assets/img/up.png}"/></a>
-                                <a th:href="@{/tratamientosEnVigor?por=DC}"><img th:src="@{assets/img/down.png}"/></a>
+                       			<a th:href="@{/tratamientosEnVigor(por=AC,fechaIntroducida=${fechaIntroducida})}"><img th:src="@{assets/img/up.png}"/></a>
+                                <a th:href="@{/tratamientosEnVigor(por=DC,fechaIntroducida=${fechaIntroducida})}"><img th:src="@{assets/img/down.png}"/></a>
                        		</div>                    	
                         </th>
                         <th class="col-xs">
                        		<div class="col-sm-8">
-                       			<input type="text" class="form-control" placeholder="Producto" name="producto" id="producto">
+                       			<b> Producto </b>
                        		</div>
                        		<div class="col-sm-2">
-                       			<a th:href="@{/tratamientosEnVigor?por=AP}"><img th:src="@{assets/img/up.png}"/></a>
-                                <a th:href="@{/tratamientosEnVigor?por=DP}"><img th:src="@{assets/img/down.png}"/></a>
+                       			<a th:href="@{/tratamientosEnVigor(por=AP,fechaIntroducida=${fechaIntroducida})}"><img th:src="@{assets/img/up.png}"/></a>
+                                <a th:href="@{/tratamientosEnVigor(por=DP,fechaIntroducida=${fechaIntroducida})}"><img th:src="@{assets/img/down.png}"/></a>
                        		</div>                    	
                         </th>
                         <th class="col-xs">
                        		<div class="col-sm-8">
-                       			<input type="text" class="form-control" placeholder="Numero de lote" name="numeroLote" id="numeroLote">
+                       			<b> Número de lote </b>
                        		</div>
                        		<div class="col-sm-2">
-                       			<a th:href="@{/tratamientosEnVigor?por=ANL}"><img th:src="@{assets/img/up.png}"/></a>
-                                <a th:href="@{/tratamientosEnVigor?por=DNL}"><img th:src="@{assets/img/down.png}"/></a>
+                       			<a th:href="@{/tratamientosEnVigor(por=ANL,fechaIntroducida=${fechaIntroducida})}"><img th:src="@{assets/img/up.png}"/></a>
+                                <a th:href="@{/tratamientosEnVigor(por=DNL,fechaIntroducida=${fechaIntroducida})}"><img th:src="@{assets/img/down.png}"/></a>
                        		</div>                    	
                         </th>
                         <th class="col-xs">
                        		<div class="col-sm-8">
-                       			<input type="date" class="form-control" placeholder="Fecha de tratamiento" name="fechaTratamiento" id="fechaTratamiento">
+                       			<b> Fecha de tratamiento </b>
                        		</div>
                        		<div class="col-sm-2">
-                       			<a th:href="@{/tratamientosEnVigor?por=AFT}"><img th:src="@{assets/img/up.png}"/></a>
-                                <a th:href="@{/tratamientosEnVigor?por=DFT}"><img th:src="@{assets/img/down.png}"/></a>
+                       			<a th:href="@{/tratamientosEnVigor(por=AFT,fechaIntroducida=${fechaIntroducida})}"><img th:src="@{assets/img/up.png}"/></a>
+                                <a th:href="@{/tratamientosEnVigor(por=DFT,fechaIntroducida=${fechaIntroducida})}"><img th:src="@{assets/img/down.png}"/></a>
                        		</div>                    	
                         </th>
                         <th class="col-xs">
                        		<div class="col-sm-8">
-                       			<input type="date" class="form-control" placeholder="Plazo de reentrada" name="finPlazoReentrada" id="plazoReentrada" >
+                       			<b> Fin Plazo Recolección </b>
                        		</div>
                        		<div class="col-sm-2">
-                       			<a th:href="@{/tratamientosEnVigor?por=APRec}"><img th:src="@{assets/img/up.png}"/></a>
-                                <a th:href="@{/tratamientosEnVigor?por=DPRec}"><img th:src="@{assets/img/down.png}"/></a>
+                       			<a th:href="@{/tratamientosEnVigor(por=APRec,fechaIntroducida=${fechaIntroducida})}"><img th:src="@{assets/img/up.png}"/></a>
+                                <a th:href="@{/tratamientosEnVigor(por=DPRec,fechaIntroducida=${fechaIntroducida})}"><img th:src="@{assets/img/down.png}"/></a>
                        		</div>                    	
                         </th>
                         <th class="col-xs">
                        		<div class="col-sm-8">
-                       			<input type="date" class="form-control" placeholder="Plazo de recolecciÃ³n" name="finPlazoRecoleccion" id="plazoRecoleccion" >
+                       			<b> Fin Plazo Reentrada </b>
                        		</div>
                        		<div class="col-sm-2">
-                       			<a th:href="@{/tratamientosEnVigor?por=APRee}"><img th:src="@{assets/img/up.png}"/></a>
-                                <a th:href="@{/tratamientosEnVigor?por=DPRee}"><img th:src="@{assets/img/down.png}"/></a>
+                       			<a th:href="@{/tratamientosEnVigor(por=APRee,fechaIntroducida=${fechaIntroducida})}"><img th:src="@{assets/img/up.png}"/></a>
+                                <a th:href="@{/tratamientosEnVigor(por=DPRee,fechaIntroducida=${fechaIntroducida})}"><img th:src="@{assets/img/down.png}"/></a>
                        		</div>                    	
                         </th>
-                        <th>
-	                        <button type="submit" class="btn btn-default btn-lg">
-						  		<span class="glyphicon glyphicon-search" aria-hidden="true"></span> 
-							</button>
-						</th>	
+                        
 							
 	                    </tr>
 		        	</thead>
