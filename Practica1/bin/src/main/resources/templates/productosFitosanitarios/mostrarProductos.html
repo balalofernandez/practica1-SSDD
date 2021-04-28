@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Productos Fitosanitarios</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="extensions/filter-control/bootstrap-table-filter-control.css">
+<script src="extensions/filter-control/bootstrap-table-filter-control.js"></script>
+<link rel="stylesheet" type="text/css"
+href="../static/css/estilos.css"
+th:href="@{/css/estilos.css}"/>
+
+</head>
+<body>
+	<div class="container-fluid">
+	<ul class="nav nav-pills" >
+	  <li role="presentation" ><a href="/tratamientos">Tratamientos</a></li>
+	  <li role="presentation"><a href="/cultivos">Cultivos</a></li>
+	  <li role="presentation" class="active"><a href="/productosFitosanitarios">Productos Fitosanitarios</a></li>
+	</ul>
+	
+	<div class="page-header">
+	  <h1>Tus productos fitosanitarios</h1>
+	</div>
+	<p>
+	En esta página te mostraremos tus productos fitosanitarios para los cultivos.
+	</p>
+	<a href="/insertarProducto">Insertar Nuevo Producto Fitosanitario</a>
+	
+		<table id="example" class="table table-striped table-bordered table-hover">
+			<form action="/productosFitosanitarios">
+		        <thead>
+		        	<tr class="filters">
+                        <th><input type="number" class="form-control" placeholder="Producto Fitosanitario" name="productoFitosanitario" id="productoFitosanitario"></th>
+                        <th><input type="text" class="form-control" placeholder="Descripcion" name="descripcion" id="descripcion"></th>
+                        <th><input type="text" class="form-control" placeholder="Nombre" name="nombre" id="nombre"></th>
+                        <th><input type="number" class="form-control" placeholder="Plazo de recoleccion" name="plazoRecoleccion" id="plazoRecoleccion"></th>
+                              <th><input type="number" class="form-control" placeholder="Plazo de reentrada" name="plazoReentrada" id="plazoReentrada"></th>
+                        <th>
+	                        <button type="submit" class="btn btn-default btn-lg">
+						  		<span class="glyphicon glyphicon-search" aria-hidden="true"></span> 
+							</button>
+						</th>
+							
+	                    </tr>
+		        	</thead>
+	        	</form>
+	        <tbody>
+	            <tr th:each=" producto:${productos}">
+	                <td><a th:text="${producto.idProducto}" th:href="@{/modificarProducto(id=${producto.idProducto})}"></a></td>
+	                <td><p th:text="${producto.descripcion }"></p></td>
+	                <td><p th:text="${producto.nombre}"></p></td>
+	                <td><p th:text="${producto.plazoReentrada}"></p></td>
+	                <td><p th:text="${producto.plazoRecoleccion}"></p></td>
+	                <td>
+	                	<a th:href="@{/modificarProducto(id=${producto.idProducto})}" class="btn btn-default btn-lg">
+	                		<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+	                	</a>
+	                </td>
+	            </tr>            
+	        </tbody>
+	        <tfoot>
+	            <tr>
+	                <th>Producto Fitosanitario</th>
+	                <th>Descripcion</th>
+	                <th>Nombre</th>
+	                <th>Plazo de reentrada</th>
+	                <th>Plazo de recolección</th>
+	            </tr>
+	        </tfoot>
+	    </table>
+	</div>
+</body>
+</html>

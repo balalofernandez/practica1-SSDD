@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cultivos</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script src="extensions/filter-control/bootstrap-table-filter-control.js"></script>
+<link rel="stylesheet" type="text/css"
+href="../static/css/estilos.css"
+th:href="@{/css/estilos.css}"/>
+
+</head>
+<body>
+	<div class="container-fluid">
+	<ul class="nav nav-pills" >
+	  <li role="presentation"><a href="/tratamientos">Tratamientos</a></li>
+	  <li role="presentation" class="active"><a href="/cultivos">Cultivos</a></li>
+	  <li role="presentation"><a href="/productosFitosanitarios">Productos Fitosanitarios</a></li>
+	</ul>
+	
+	<div class="page-header">
+		  <h1>Modifica tu cultivo:</h1>
+		</div>
+		<div class="container">
+			<form class="form-horizontal" th:action="@{/cultivoModificado(id=${cultivo.idCultivo})}" method="post">
+			  <div class="form-group">
+			    <label class="col-sm-2 control-label">ID</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="inputText" placeholder="ID"  th:value="${cultivo.idCultivo}" disabled>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="inputText" class="col-sm-2 control-label">Especie</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="inputText" placeholder="especie" th:value="${cultivo.especie}" name="especie">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="inputText" class="col-sm-2 control-label">Variedad</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="inputText" placeholder="variedad" th:value="${cultivo.variedad}" name="variedad">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="inputText" class="col-sm-2 control-label">Fecha de plantacion</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="inputText" placeholder="fecha de plantacion" th:value="${cultivo.fechaPlantacion}" name="fechaPlantacion">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="inputText" class="col-sm-2 control-label">Zona</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="inputText" placeholder="zona" th:value="${cultivo.zona}" name="zona">
+			    </div>
+			  </div>
+			  <input type="submit" class="btn btn-primary" name="enviar" value="Modificar">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

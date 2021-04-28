@@ -3,6 +3,7 @@ package practica1.controller;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
@@ -215,6 +216,84 @@ public class TratamientosController {
 		model.addAttribute("mensaje","Se ha insertado el tratamiento con éxito");
 		
 		return "InsertadoConExito.html";
+	}
+	
+	@RequestMapping("/tratamientosEnVigor")
+	public String comprobarSiTratamientoEnVigor(
+			@RequestParam(value="fechaIntroducida", required = false) String fechaIntroducida,
+			@RequestParam(required=false) String por,
+			Model model) {
+		
+			boolean bool1;
+			boolean bool2;
+			
+			if (fechaIntroducida != null && fechaIntroducida != "") {
+				LocalDate fecha = LocalDate.parse(fechaIntroducida);
+				model.addAttribute("fechaIntroducida", fechaIntroducida);
+				if (por == null) {
+					por = "";
+				}
+				switch(por) {
+				case "AI":
+					model.addAttribute("tratamientos",
+							repTratamientos.findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByIdTratamientoAsc(
+							fecha, fecha, fecha, fecha));
+					break;
+				case "DI":
+					model.addAttribute("tratamientos",
+							repTratamientos.findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByIdTratamientoDesc(
+							fecha.plusDays(-1), fecha.plusDays(1), fecha.plusDays(-1), fecha.plusDays(1)));
+					break;
+				case "AC":
+					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByCultivoEspecieAsc());
+					break;
+				case "DC":
+					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByCultivoEspecieDesc());
+					break;
+				case "AP":
+					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByProductoNombreAsc());
+					break;
+				case "DP":
+					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByProductoNombreDesc());
+					break;
+				case "ANL":
+					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByNumeroLoteAsc());
+					break;
+				case "DNL":
+					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByNumeroLoteDesc());
+					break;
+				case "AFT":
+					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByFechaTratamientoAsc());
+					break;
+				case "DFT":
+					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByFechaTratamientoDesc());
+					break;
+				case "APRec":
+					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByFinPlazoRecoleccionAsc());
+					break;
+				case "DPRec":
+					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByFinPlazoRecoleccionDesc());
+					break;
+				case "APRee":
+					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByFinPlazoReentradaAsc());
+					break;
+				case "DPRee":
+					model.addAttribute("tratamientos",repTratamientos.findAllByOrderByFinPlazoReentradaDesc());
+					break;
+				default:
+					model.addAttribute("tratamientos", 
+							repTratamientos.findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBefore(
+									fecha.plusDays(-1), fecha.plusDays(1), fecha.plusDays(-1), fecha.plusDays(1)));
+				}
+				
+			}
+			else {
+				model.addAttribute("tratamientos", repTratamientos.findAll());
+			}
+				
+		
+			
+			return "/tratamientos/tratamientosEnVigor";
 	}
 	
 }

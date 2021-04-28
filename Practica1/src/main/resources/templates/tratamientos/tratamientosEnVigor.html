@@ -16,7 +16,7 @@
 	  <li role="presentation" class="active"><a href="/tratamientos">Tratamientos</a></li>
 	  <li role="presentation"><a href="/cultivos">Cultivos</a></li>
 	  <li role="presentation"><a href="/productosFitosanitarios">Productos Fitosanitarios</a></li>
-	   <form class="navbar-form navbar-left" role="search" th:action="@{/tratamientosEnVigor}">
+	  <form class="navbar-form navbar-left" role="search" th:action="@{/tratamientosEnVigor}">
 		  <div class="form-group">
 		    <input type="text" class="form-control" onBlur="(this.type='text')" onFocus="(this.type='date')" placeholder="Consulta por plazos de seguridad en vigor" id="consulta" name="fechaIntroducida">
 		  </div>
@@ -28,7 +28,7 @@
 	  <h1>Tus tratamientos</h1>
 	</div>
 	<p>
-	En esta pÃ¡gina te mostraremos tus tratamientos para las plagas.
+	En esta pÃ¡gina te mostraremos los tratamientos que aún están en vigor.
 	</p>
 	
 	<a href="/insertarTratamiento">Insertar Nuevo Tratamiento</a>
@@ -43,8 +43,8 @@
                        			<input type="number" class="form-control" placeholder="Tratamiento" name="tratamiento" id="tratamiento">
                        		</div>
                        		<div class="col-sm-2">
-                       			<a th:href="@{/ordenaTratamientos?por=AI}"><img th:src="@{assets/img/up.png}"/></a>
-                                <a th:href="@{/ordenaTratamientos?por=DI}"><img th:src="@{assets/img/down.png}"/></a>
+                       			<a th:href="@{/tratamientosEnVigor(por=AI,fechaIntroducida=${fechaIntroducida})}"><img th:src="@{assets/img/up.png}"/></a>
+                                <a th:href="@{/tratamientosEnVigor(por=DI,fechaIntroducida=${fechaIntroducida})}"><img th:src="@{assets/img/down.png}"/></a>
                        		</div>    
                         	</div>                       		                	
                         </th>
@@ -53,8 +53,8 @@
                        			<input type="text" class="form-control" placeholder="Cultivo" name="cultivo" id="cultivo">
                        		</div>
                        		<div class="col-sm-2">
-                       			<a th:href="@{/ordenaTratamientos?por=AC}"><img th:src="@{assets/img/up.png}"/></a>
-                                <a th:href="@{/ordenaTratamientos?por=DC}"><img th:src="@{assets/img/down.png}"/></a>
+                       			<a th:href="@{/tratamientosEnVigor?por=AC}"><img th:src="@{assets/img/up.png}"/></a>
+                                <a th:href="@{/tratamientosEnVigor?por=DC}"><img th:src="@{assets/img/down.png}"/></a>
                        		</div>                    	
                         </th>
                         <th class="col-xs">
@@ -62,8 +62,8 @@
                        			<input type="text" class="form-control" placeholder="Producto" name="producto" id="producto">
                        		</div>
                        		<div class="col-sm-2">
-                       			<a th:href="@{/ordenaTratamientos?por=AP}"><img th:src="@{assets/img/up.png}"/></a>
-                                <a th:href="@{/ordenaTratamientos?por=DP}"><img th:src="@{assets/img/down.png}"/></a>
+                       			<a th:href="@{/tratamientosEnVigor?por=AP}"><img th:src="@{assets/img/up.png}"/></a>
+                                <a th:href="@{/tratamientosEnVigor?por=DP}"><img th:src="@{assets/img/down.png}"/></a>
                        		</div>                    	
                         </th>
                         <th class="col-xs">
@@ -71,8 +71,8 @@
                        			<input type="text" class="form-control" placeholder="Numero de lote" name="numeroLote" id="numeroLote">
                        		</div>
                        		<div class="col-sm-2">
-                       			<a th:href="@{/ordenaTratamientos?por=ANL}"><img th:src="@{assets/img/up.png}"/></a>
-                                <a th:href="@{/ordenaTratamientos?por=DNL}"><img th:src="@{assets/img/down.png}"/></a>
+                       			<a th:href="@{/tratamientosEnVigor?por=ANL}"><img th:src="@{assets/img/up.png}"/></a>
+                                <a th:href="@{/tratamientosEnVigor?por=DNL}"><img th:src="@{assets/img/down.png}"/></a>
                        		</div>                    	
                         </th>
                         <th class="col-xs">
@@ -80,8 +80,8 @@
                        			<input type="date" class="form-control" placeholder="Fecha de tratamiento" name="fechaTratamiento" id="fechaTratamiento">
                        		</div>
                        		<div class="col-sm-2">
-                       			<a th:href="@{/ordenaTratamientos?por=AFT}"><img th:src="@{assets/img/up.png}"/></a>
-                                <a th:href="@{/ordenaTratamientos?por=DFT}"><img th:src="@{assets/img/down.png}"/></a>
+                       			<a th:href="@{/tratamientosEnVigor?por=AFT}"><img th:src="@{assets/img/up.png}"/></a>
+                                <a th:href="@{/tratamientosEnVigor?por=DFT}"><img th:src="@{assets/img/down.png}"/></a>
                        		</div>                    	
                         </th>
                         <th class="col-xs">
@@ -89,8 +89,8 @@
                        			<input type="date" class="form-control" placeholder="Plazo de reentrada" name="finPlazoReentrada" id="plazoReentrada" >
                        		</div>
                        		<div class="col-sm-2">
-                       			<a th:href="@{/ordenaTratamientos?por=APRec}"><img th:src="@{assets/img/up.png}"/></a>
-                                <a th:href="@{/ordenaTratamientos?por=DPRec}"><img th:src="@{assets/img/down.png}"/></a>
+                       			<a th:href="@{/tratamientosEnVigor?por=APRec}"><img th:src="@{assets/img/up.png}"/></a>
+                                <a th:href="@{/tratamientosEnVigor?por=DPRec}"><img th:src="@{assets/img/down.png}"/></a>
                        		</div>                    	
                         </th>
                         <th class="col-xs">
@@ -98,8 +98,8 @@
                        			<input type="date" class="form-control" placeholder="Plazo de recolecciÃ³n" name="finPlazoRecoleccion" id="plazoRecoleccion" >
                        		</div>
                        		<div class="col-sm-2">
-                       			<a th:href="@{/ordenaTratamientos?por=APRee}"><img th:src="@{assets/img/up.png}"/></a>
-                                <a th:href="@{/ordenaTratamientos?por=DPRee}"><img th:src="@{assets/img/down.png}"/></a>
+                       			<a th:href="@{/tratamientosEnVigor?por=APRee}"><img th:src="@{assets/img/up.png}"/></a>
+                                <a th:href="@{/tratamientosEnVigor?por=DPRee}"><img th:src="@{assets/img/down.png}"/></a>
                        		</div>                    	
                         </th>
                         <th>

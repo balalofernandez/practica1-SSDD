@@ -31,4 +31,11 @@ public interface TratamientoRepository extends JpaRepository<Tratamiento, Long> 
 	List<Tratamiento> findAllByOrderByFinPlazoRecoleccionDesc();
 	List<Tratamiento> findAllByOrderByFinPlazoReentradaAsc();
 	List<Tratamiento> findAllByOrderByFinPlazoReentradaDesc();
+	List<Tratamiento> findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBefore(
+			LocalDate f1, LocalDate f2, LocalDate f3, LocalDate f4);
+	List<Tratamiento> findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByIdTratamientoAsc(
+			LocalDate f1, LocalDate f2, LocalDate f3, LocalDate f4);
+	List<Tratamiento> findByFinPlazoRecoleccionAfterAndFechaTratamientoBeforeOrFinPlazoReentradaAfterAndFechaTratamientoBeforeOrderByIdTratamientoDesc(
+			LocalDate f1, LocalDate f2, LocalDate f3, LocalDate f4);
+	
 }

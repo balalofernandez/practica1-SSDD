@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Tratamientos</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script src="extensions/filter-control/bootstrap-table-filter-control.js"></script>
+<link rel="stylesheet" type="text/css"
+href="../static/css/estilos.css"
+th:href="@{/css/estilos.css}"/>
+
+</head>
+<body>
+	<div class="container-fluid">
+	<ul class="nav nav-pills" >
+	  <li role="presentation" class="active"><a href="/tratamientos">Tratamientos</a></li>
+	  <li role="presentation"><a href="/cultivos">Cultivos</a></li>
+	  <li role="presentation"><a href="/productosFitosanitarios">Productos Fitosanitarios</a></li>
+	</ul>
+	
+	<div class="page-header">
+		  <h1>Inserta un nuevo tratamiento:</h1>
+		</div>
+		<div class="container">
+			<form class="form-horizontal" action="/nuevoTratamiento" method="get">
+			  <div class="form-group">
+			    <label class="col-sm-2 control-label">ID</label>
+			    <div class="col-sm-10">
+			      <p class="form-control-static"></p>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="inputText" class="col-sm-2 control-label">Elige entre los cultivos:</label>
+			    <div class="col-sm-8">
+			    	<select name="cultivo" id="tratamientos" class="selectpicker form-control">
+						<option th:each=" cultivo:${cultivos}" th:text="${cultivo}" th:value="${cultivo.idCultivo}" ></option>
+					</select>
+			    </div>
+			    <div class="col-sm-2">
+			    	<a class="btn btn-primary" name="nuevoTratamiento" href="/insertarCultivo" >Crea un nuevo Cultivo</a>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="inputText" class="col-sm-2 control-label">Producto</label>
+			    <div class="col-sm-8">
+			    	<select name="producto"  id="tratamientos" class="selectpicker form-control">
+						<option  th:each=" producto:${productos}" th:text="${producto}" th:value="${producto.idProducto}"></option>
+					</select>
+			    </div>
+			    <div class="col-sm-2">
+			    	<a class="btn btn-primary" name="nuevoTratamiento" href="/insertarProducto" >Crea un nuevo Producto</a>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="inputText" class="col-sm-2 control-label">Numero de Lote</label>
+			    <div class="col-sm-8">
+			      <input type="text" class="form-control" id="inputText" placeholder="numero de lote" name="numeroLote" required>
+			    </div>
+			  </div>
+			  
+			  <div class="form-group">
+			    <label for="inputText" class="col-sm-2 control-label">Fecha de tratamiento</label>
+			    <div class="col-sm-8">
+			      <input type="date" class="form-control" id="inputText" name="fechaTratamiento" required>
+			    </div>
+			  </div>
+			  <input type="submit" class="btn btn-primary" name="enviar" value="Insertar">
+			</form>
+		</div>
+	</div>
+</body>
+</html>
