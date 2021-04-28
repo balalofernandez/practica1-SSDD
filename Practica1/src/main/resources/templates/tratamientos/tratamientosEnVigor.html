@@ -27,7 +27,7 @@
 	<div class="page-header">
 	  <h1>Tus tratamientos</h1>
 	</div>
-	<p th:text="'En esta página te mostraremos los tratamientos que aún están en vigor a fecha de ' + ${fechaIntroducida}">
+	<p th:text="'En esta pÃ¡gina te mostraremos los tratamientos que aÃºn estÃ¡n en vigor a fecha de ' + ${fechaIntroducida}">
 
 	</p>
 	
@@ -68,7 +68,7 @@
                         </th>
                         <th class="col-xs">
                        		<div class="col-sm-8">
-                       			<b> Número de lote </b>
+                       			<b> NÃºmero de lote </b>
                        		</div>
                        		<div class="col-sm-2">
                        			<a th:href="@{/tratamientosEnVigor(por=ANL,fechaIntroducida=${fechaIntroducida})}"><img th:src="@{assets/img/up.png}"/></a>
@@ -86,7 +86,7 @@
                         </th>
                         <th class="col-xs">
                        		<div class="col-sm-8">
-                       			<b> Fin Plazo Recolección </b>
+                       			<b> Fin Plazo RecolecciÃ³n </b>
                        		</div>
                        		<div class="col-sm-2">
                        			<a th:href="@{/tratamientosEnVigor(por=APRec,fechaIntroducida=${fechaIntroducida})}"><img th:src="@{assets/img/up.png}"/></a>
